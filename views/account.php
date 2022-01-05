@@ -1,4 +1,4 @@
-<?php require_once('libraries/forums.php'); ?>
+<?php //require_once('libraries/forums.php'); ?>
 		<div class="box pane">
 			<h1 style="margin: 0;">Account</h1>
 			
