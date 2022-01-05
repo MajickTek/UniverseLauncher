@@ -81,21 +81,25 @@ class Registration
                 $user_email = $this->db_connection->real_escape_string(strip_tags($_POST['user_email'], ENT_QUOTES));
 
                 $user_password = $_POST['user_password_new'];
-
+                $bcoptions = ['cost' => 12];
+				$passhash = password_hash($user_password, PASSWORD_BCRYPT, $bcoptions);
+				$newpasshash = str_replace("$2y$", "$2a$", $passhash);
                 // Hashes the user's password with the SHA512 algorithm and encode with base64 for backwards compability
-                $user_password_hash = base64_encode(hash('sha512', $user_password));
+                $user_password_hash = $newpasshash;//base64_encode(hash('sha512', $user_password));
 
                 // check if user or email address already exists
-                $sql = "SELECT * FROM accounts WHERE name = '" . $user_name . "' OR email = '" . $user_email . "';";
+                $sql = "SELECT * FROM accounts WHERE NAME = '" . $user_name . "';";
                 $query_check_user_name = $this->db_connection->query($sql);
 
                 if ($query_check_user_name->num_rows == 1) {
                     $this->errors[] = "Sorry, that username / email address is already taken.";
                 } else {
                     // write new user's data into database
-                    $sql = "INSERT INTO accounts (name, password, email, banned)
-                            VALUES('" . $user_name . "', '" . $user_password_hash . "', '" . $user_email . "', TRUE);";
-                    $query_new_user_insert = $this->db_connection->query($sql);
+                    //$sql = "INSERT INTO accounts (name, password, email, banned)
+                     //       VALUES('" . $user_name . "', '" . $user_password_hash . "', '" . $user_email . "', TRUE);";
+                    $sql = "INSERT INTO accounts (NAME, PASSWORD, gm_level, locked, banned, play_key_id, mute_expire)
+					VALUES ('" . $user_name . "', '" . $user_password_hash . "', " . "0, 0, 0, 0, 0);";
+					$query_new_user_insert = $this->db_connection->query($sql);
 
                     // if user has been added successfully
                     if ($query_new_user_insert) {
