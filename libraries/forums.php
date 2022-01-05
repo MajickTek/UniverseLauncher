@@ -15,7 +15,7 @@ use \Michelf\Markdown;
 		preg_match_all("/\@([A-Za-z0-9]+)/", $source, $matches);
 		$users = array_unique($matches[1]);
 		foreach ($users as $user){
-			$sql = "SELECT * FROM `accounts` WHERE `name` = '" . $user . "'";
+			$sql = "SELECT * FROM `accounts` WHERE `NAME` = '" . $user . "'";
 			$res = $mysql->query($sql);
 			if ($res != NULL){
 				if ($res->num_rows > 0){
