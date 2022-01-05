@@ -115,6 +115,8 @@ class Registration
 
                     // if user has been added successfully
                     if ($query_new_user_insert) {
+						$updatekeyuse = "UPDATE play_keys SET key_uses = 1, active = 1 WHERE key_string = '" . $key . "';";
+						$updatesuccess = $this->db_connection->query($updatekeyuse);
                         $this->messages[] = "Your account has been created successfully. You can now log in.";
                     } else {
                         $this->errors[] = "Sorry, your registration failed. Please go back and try again.";
