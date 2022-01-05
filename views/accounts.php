@@ -9,7 +9,7 @@
 		<table style="display: inline-table;">
 			<tr><th>ID</th><th>Name</th><th>E-Mail</th><th>Rank</th><th>Locked</th><th>Banned</th><th>Actions</th></tr>
 <?php
-		$sql = "SELECT `id`, `name`, `email`, `rank`, `locked`, `banned` FROM `accounts`";
+		$sql = "SELECT * FROM `accounts`";
 		$res = $mysql->query($sql);
 		$accs = [];
 		if ($res->num_rows){
@@ -18,8 +18,8 @@
 				$accs[$obj->name] = $obj;
 ?>			<tr><td><?php echo $obj->id;
 	?></td><td><?php echo $obj->name;
-	?></td><td><?php echo $obj->email;
-	?></td><td><?php echo getRankName($obj->rank);
+	?></td><td><?php //echo $obj->email;
+	?></td><td><?php //echo getRankName($obj->rank);
 	?></td><td style="background-color: <?php if ($obj->locked > 0) echo "rgba(221,0,0,0.6)"; else echo "rgba(34,221,34,0.6)"; ?>;"><?php if ($obj->locked > 0) echo "YES"; else echo "NO";
 	?></td><td style="background-color: <?php if ($obj->banned > 0) echo "rgba(221,0,0,0.6)"; else echo "rgba(34,221,34,0.6)"; ?>;"><?php if ($obj->banned > 0) echo "YES"; else echo "NO";
 	?></td><td>
@@ -45,11 +45,12 @@
 				<tr><th>Password</th><td><input name="password" type="password"/></td></tr>
 				<tr><th>Repeat Password</th><td><input name="password-repeat" type="password"/></td></tr>
 				<tr><th>Rank</th><td>
-					<select name="rank">
+					<!--<select name="rank">
 						<option value="0"><?php echo getRankName(0); ?></option>
 						<option value="1"<?php if ($accs[$acc]->rank == 1) echo " selected"; ?>><?php echo getRankName(1); ?></option>
 						<option value="2"<?php if ($accs[$acc]->rank == 2) echo " selected"; ?>><?php echo getRankName(2); ?></option>
 					</select>
+					-->
 				</td></tr>
 				<tr><th>Locked</th><td><input id="lock_cb" name="locked" value="true" type="checkbox"<?php if ($accs[$acc]->locked > 0) echo " checked=\"true\""; ?>/><label for="lock_cb"></label></td></tr>
 				<tr><th>Banned</th><td><input id="ban_cb" name="banned" value="true" type="checkbox"<?php if ($accs[$acc]->banned > 0) echo " checked=\"true\""; ?>/><label for="ban_cb"></label></td></tr>
