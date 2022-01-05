@@ -2,11 +2,25 @@
 	function getRankName($rankid){
 		switch($rankid){
 			case 0:
-				return "REGULAR";
+				return "Civilian";
 			case 1:
-				return "MODERATOR";
+				return "Forum Moderator";
 			case 2:
-				return "ADMIN";
+				return "Junior Moderator";
+			case 3:
+				return "Moderator";
+			case 4:
+				return "Senior Moderator";
+			case 5:
+				return "Lead Moderator";
+			case 6:
+				return "Junior Developer";
+			case 7:
+				return "Inactive Developer";
+			case 8:
+				return "Developer";
+			case 9:
+				return "Operator";
 			default:
 				return "HACKER?";
 		}
@@ -41,20 +55,20 @@
 				}else{
 					$return .= "No name specified<br>\n";
 				}
-				if (isset($_POST['email'])){
-					if(preg_match("/^[A-Za-z0-9._]*@[A-Za-z0-9.]*$/", $_POST['email']) == 1 || $_POST['email'] == ""){
-						//$return .= "E-Mail: " . $_POST['email'] . "<br>\n";
-						if ($uFlag) $sql .= ", ";
-						$user_email = $_POST['email'];
-						$sql .= "`email` = '" . $user_email . "'";
-						$uFlag = true;
-					}else{
-						$return .= "Incorrect E-Mail syntax<br>\n";
-						$flag = false;
-					}
-				}else{
-					//echo "No E-mail specified<br>\n";
-				}
+				//if (isset($_POST['email'])){
+				//	if(preg_match("/^[A-Za-z0-9._]*@[A-Za-z0-9.]*$/", $_POST['email']) == 1 || $_POST['email'] == ""){
+				//		//$return .= "E-Mail: " . $_POST['email'] . "<br>\n";
+				//		if ($uFlag) $sql .= ", ";
+				//		$user_email = $_POST['email'];
+				//		$sql .= "`email` = '" . $user_email . "'";
+				//		$uFlag = true;
+				//	}else{
+				//		$return .= "Incorrect E-Mail syntax<br>\n";
+				//		$flag = false;
+				//	}
+				//}else{
+				//	//echo "No E-mail specified<br>\n";
+				//}
 				
 				if(isset($_POST['password']) && !empty($_POST['password'])){
 					if (preg_match("/^[A-Za-z0-9._]*$/", $_POST['password']) == 1){
@@ -62,7 +76,7 @@
 							if ($_POST['password-repeat'] == $_POST['password']){
 								$user_newpassword = $_POST['password'];
 								if ($uFlag) $sql .= ", ";
-								$sql .= "`password` = '" . md5($user_newpassword) . "'";
+								$sql .= "`password` = '" . str_replace("$2y$", "$2a$", password_hash($user_newpassword, PASSWORD_BCRYPT, $bcoptions)) . "'";
 								//$return .= "New Password: " . $user_newpassword . "<br>";
 								$uFlag = true;
 							}else{

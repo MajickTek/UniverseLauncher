@@ -86,7 +86,7 @@ class Login
 						$_SESSION['user_name'] = $result_row->NAME;
                         //$_SESSION['user_email'] = $result_row->email;
                         $_SESSION['user_login_status'] = 1;
-						//$_SESSION['rank'] = $result_row->rank;
+						$_SESSION['rank'] = $result_row->gm_level;
 
                     } else {
                         $this->errors[] = "Wrong password. Try again.";
