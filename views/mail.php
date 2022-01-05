@@ -4,7 +4,7 @@
 		?>
 			<h1 style="margin: 0;">Mail</h1>
 		<?php
-				$sql = "SELECT * FROM `mails` WHERE `recipient_id` = '" . $_SESSION['char_id'] . "';";
+				$sql = "SELECT * FROM `mail` WHERE `receiver_id` = '" . $_SESSION['char_id'] . "';";
 				$res = $mysql->query($sql);
 				if ($res == NULL){
 					//Error
@@ -15,13 +15,13 @@
 			<br>
 					<div style="background-color: #FFF; color: #000; border-radius: 15px; padding: 30px;">
 						<pre style="margin: 0;">
-<?php echo "DATE:    " . $obj->sent_time; ?>
+<?php echo "DATE:    " . $obj->time_sent; ?>
 						
-<?php echo "FROM:    " . htmlspecialchars($obj->sender); ?>
+<?php echo "FROM:    " . htmlspecialchars($obj->sender_name); ?>
 
 <?php echo "SUBJECT: " . htmlspecialchars($obj->subject); ?>
 <br>
-<?php echo htmlspecialchars($obj->text); ?></pre>
+<?php echo htmlspecialchars($obj->body); ?></pre>
 					</div>
 		<?php
 					}

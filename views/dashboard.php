@@ -1,6 +1,15 @@
 			<div class="widget box">
 				<h3 style="padding-bottom: 5px;">Server Status</h3>
 				<?php
+					$sql = "SELECT * FROM servers;";
+					$res = $mysql->query($sql);
+					if ($res != NULL){
+						$obj = $res->fetch_object();
+						echo "<b>Servers</b>: " . $obj->name . "@" . $obj->ip . ":" . $obj->port . "<br>\n";
+					}
+				?>
+				<br>
+				<?php
 					$sql = "SELECT COUNT(name) as cnt FROM accounts;";
 					$res = $mysql->query($sql);
 					if ($res != NULL){
