@@ -21,7 +21,7 @@
 			<div class="logo pane"></div>
 			<ul class="nav">
 				<li><a class="button img-button dashboard-button<?php echo isPage($page, 'dashboard'); ?>" href="?page=dashboard">Dashboard</a></li>
-				<li><a class="button img-button forums-button<?php echo isPage($page, 'forums'); ?>" href="?page=forums">Forums</a></li>
+				<!--<li><a class="button img-button forums-button<?php echo isPage($page, 'forums'); ?>" href="?page=forums">Forums</a></li>-->
 				<li><a class="button img-button account-button<?php echo isPage($page, 'account'); ?>" href="?page=account">Account</a></li>
 				<li><a class="button img-button logout-button" href="?logout">Logout</a></li>
 			</ul>
@@ -87,9 +87,9 @@
 		case 'dashboard':
 			include('views/dashboard.php');
 			break;
-		case 'forums':
-			include('views/forums.php');
-			break;
+		//case 'forums':
+		//	include('views/forums.php');
+		//	break;
 		case 'account':
 			include('views/account.php');
 			break;
