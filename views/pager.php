@@ -42,16 +42,17 @@
 			<ul class="nav">
 <?php
 			if (!$mysql->connect_errno) {
-		$sql = "SELECT `characters`.`name` as `charname`, `characters`.`objectID` FROM `characters`, `accounts` WHERE `accounts`.`id` = `characters`.`accountID` AND `accounts`.`name` = '" . $_SESSION['user_name'] . "'";
+		//$sql = "SELECT `characters`.`name` as `charname`, `characters`.`objectID` FROM `characters`, `accounts` WHERE `accounts`.`id` = `characters`.`accountID` AND `accounts`.`name` = '" . $_SESSION['user_name'] . "'";
+		$sql = "SELECT charinfo.name as 'charname', charinfo.id as charid FROM charinfo, accounts WHERE accounts.id = charinfo.account_id AND accounts.NAME = '" . $_SESSION['user_name'] . "'";
 		$result = $mysql->query($sql);
 		$chars = [];
 		if ($result->num_rows > 0){
 			for ($i = 0; $i < $result->num_rows; $i++){
 				$resobj = $result->fetch_object();
-				$chars[] = array( 'name' => $resobj->charname, 'id' => $resobj->objectID );
+				$chars[] = array( 'name' => $resobj->charname, 'id' => $resobj->charid );
 				if (isset($_GET['char_id'])){
-					if ($_GET['char_id'] == $resobj->objectID){
-						$_SESSION['char_id'] = $resobj->objectID;
+					if ($_GET['char_id'] == $resobj->charid){
+						$_SESSION['char_id'] = $resobj->charid;
 					}
 				}
 			}
@@ -60,7 +61,7 @@
 			$char = $chars[$i];
 			$f = true;
 			if (isset($_SESSION['char_id'])){
-				if ($_SESSION['char_id'] == $char['id']){
+				if ($_SESSION['char_id'] == $char['charid']){//$char['id']
 					$f = false; ?>
 				<li><span class="button char-button char-button-<?php echo $i+1; ?>" style="color: #000;" title="<?php echo $char['name']; ?>"><?php echo $char['name']; ?></span></li>
 <?php 			}
