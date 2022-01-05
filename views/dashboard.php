@@ -28,25 +28,25 @@
 			<div class="widget box">
 				<h3 style="padding-bottom: 5px;">Server Staff</h3>
 				<?php
-					$sql = "SELECT name FROM accounts WHERE rank > 1;";
+					$sql = "SELECT NAME FROM accounts WHERE rank > 1;";
 					$res = $mysql->query($sql);
 					if ($res != NULL){
 						if ($res->num_rows > 0) echo "<b>Admins</b>: <br>\n";
 						echo "<ul style=\"margin: 0;\">\n";
 						while ($obj = $res->fetch_object()){
-							echo "<li>" . $obj->name . "</li>\n";
+							echo "<li>" . $obj->NAME . "</li>\n";
 						}
 						echo "</ul>\n";
 					}
 				?>
 				<?php
-					$sql = "SELECT name FROM accounts WHERE rank = 1;";
+					$sql = "SELECT NAME FROM accounts WHERE rank = 1;";
 					$res = $mysql->query($sql);
 					if ($res != NULL){
 						if ($res->num_rows > 0) echo "<b>Moderators</b>: <br>\n";
 						echo "<ul style=\"margin: 0;\">\n";
 						while ($obj = $res->fetch_object()){
-							echo "<li>" . $obj->name . "</li>\n";
+							echo "<li>" . $obj->NAME . "</li>\n";
 						}
 						echo "</ul>\n";
 					}
