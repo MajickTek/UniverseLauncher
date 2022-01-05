@@ -5,13 +5,13 @@
 <?php
 	if (isset($_GET['name']) && $_GET['name'] != $_SESSION['user_name'] && (preg_match("/^[0-9A-Za-z]+$/", $_GET['name']) == 1)){
 		$user = $_GET['name'];
-		$sql = "SELECT * FROM `accounts` WHERE `name` = '" . $user . "'";
+		$sql = "SELECT * FROM `accounts` WHERE `NAME` = '" . $user . "'";
 		$res = $mysql->query($sql);
 		if ($res != NULL){
 			if ($res->num_rows > 0){
 				$obj = $res->fetch_object();
 				$hash = "00000000000000000000000000000000";
-				if ($obj->email != "") $hash = md5(strtolower(trim( $obj->email)));
+				//if ($obj->email != "") $hash = md5(strtolower(trim( $obj->email)));
 ?>
 			<br>
 			<div style="float:left">
@@ -31,19 +31,19 @@
 			$return = "";
 			$sql = $sql = "UPDATE accounts SET ";
 			
-			if (isset($_POST['email'])){
-				if(preg_match("/^[A-Za-z0-9._]*@[A-Za-z0-9.]*$/", $_POST['email']) == 1 || $_POST['email'] == ""){
-					if ($uFlag) $sql .= ", ";
-					$user_email = $_POST['email'];
-					if ($user_email != $_SESSION['user_email']){
-						$sql .= "`email` = '" . $user_email . "'";
-						$_SESSION['user_email'] = $user_email;
-						$uFlag = true;
-					}
-				}else{
-					$return .= "Incorrect E-Mail syntax<br>\n";
-				}
-			}
+			//if (isset($_POST['email'])){
+			//	if(preg_match("/^[A-Za-z0-9._]*@[A-Za-z0-9.]*$/", $_POST['email']) == 1 || $_POST['email'] == ""){
+			//		if ($uFlag) $sql .= ", ";
+			//		$user_email = $_POST['email'];
+			//		if ($user_email != $_SESSION['user_email']){
+			//			$sql .= "`email` = '" . $user_email . "'";
+			//			$_SESSION['user_email'] = $user_email;
+			//			$uFlag = true;
+			//		}
+			//	}else{
+			//		$return .= "Incorrect E-Mail syntax<br>\n";
+			//	}
+			//}
 			
 			if(isset($_POST['password']) && !empty($_POST['password'])){
 				if (preg_match("/^[A-Za-z0-9._]*$/", $_POST['password']) == 1){
@@ -51,7 +51,8 @@
 						if ($_POST['password-repeat'] == $_POST['password']){
 							$user_newpassword = $_POST['password'];
 							if ($uFlag) $sql .= ", ";
-							$sql .= "`password` = '" . md5($user_newpassword) . "'";
+							$bcoptions = ['cost' => 12];
+							$sql .= "`password` = '" . str_replace("$2y$", "$2a$", password_hash($user_newpassword, PASSWORD_BCRYPT, $bcoptions)) . "'";
 							$uFlag = true;
 						}else{
 							$return .= "Repeated Password does not match<br/>";
