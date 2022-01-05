@@ -35,7 +35,7 @@ require_once('libraries/forums.php');
 				
 				if (isset($_POST['text']) && $_POST['text'] != "" && isset($_POST['submit']) && ($_POST['submit'] == 'Submit Reply' || $_POST['submit'] == 'Submit Topic')){
 					//$sql = "INSERT INTO mails (subject, text, sender, recipient_id) VALUES ('Re: " . $obj3->name . "', '" . $mysql->real_escape_string($_POST['text']) . "', '" . $name . "', '" . $topic_id . "')";
-					$sql = "INSERT INTO mails (subject, text, sender, recipient_id) VALUES ('Re: " . $obj3->name . "', '" . $mysql->real_escape_string($_POST['text']) . "', '" . $name . "', '" . $topic_id . "')";
+					$sql = "INSERT INTO mail (subject, body, sender_name, receiver_id) VALUES ('Re: " . $obj3->name . "', '" . $mysql->real_escape_string($_POST['text']) . "', '" . $name . "', '" . $topic_id . "')";
 					$mysql->query($sql);
 				}
 ?>
@@ -44,7 +44,7 @@ require_once('libraries/forums.php');
 <?php
 				$taccounts = array();
 				
-				$sql_accounts = "SELECT accounts.email, accounts.name, accounts.rank FROM accounts, mails WHERE mails.recipient_id = '" . $topic_id . "' AND mails.sender = accounts.name";
+				$sql_accounts = "SELECT accounts.name, accounts.gm_level FROM accounts, mail WHERE mails.receiver_id = '" . $topic_id . "' AND mail.sender_name = accounts.name";
 				$res_accounts = $mysql->query($sql_accounts);
 				if ($res_accounts != NULL){
 					for ($k = 0; $k < $res_accounts->num_rows; $k++){
@@ -65,7 +65,7 @@ require_once('libraries/forums.php');
 				
 				$comment_count = -1;
 				
-				$sql_post_count = "SELECT COUNT(*) as cnt FROM mails WHERE recipient_id = '" . $topic_id . "'";
+				$sql_post_count = "SELECT COUNT(*) as cnt FROM mail WHERE receiver_id = '" . $topic_id . "'";
 				$res_post_count = $mysql->query($sql_post_count);
 				if ($res_post_count != NULL){
 					$obj_post_count = $res_post_count->fetch_object();
@@ -78,7 +78,7 @@ require_once('libraries/forums.php');
 					$page_count = ((int)(($comment_count - 1) / $per_page)) + 1;
 				}
 				
-				$sql_posts = "SELECT * FROM mails WHERE recipient_id = '" . $topic_id . "' ORDER BY `sent_time` LIMIT " . $offset . ", " . $per_page;
+				$sql_posts = "SELECT * FROM mail WHERE receiver_id = '" . $topic_id . "' ORDER BY `time_sent` LIMIT " . $offset . ", " . $per_page;
 				$res_posts = $mysql->query($sql_posts);
 				if ($res_posts != NULL){
 					for ($k = 0; $k < $res_posts->num_rows; $k++){
@@ -145,7 +145,7 @@ if ($page_count > 1) { ?> <a class="pager<?php if ($current == $page_count) echo
 	
 	if (!$flag && isset($_GET['post']) && is_numeric($_GET['post'])){
 		$id = (int) $_GET['post'];
-		$sql = "SELECT * FROM `mails` WHERE `id` = '" . $id . "'";
+		$sql = "SELECT * FROM `mail` WHERE `id` = '" . $id . "'";
 		$res = $mysql->query($sql);
 		if ($res != NULL && $res->num_rows > 0){
 			$obj = $res->fetch_object();
@@ -164,7 +164,7 @@ if ($page_count > 1) { ?> <a class="pager<?php if ($current == $page_count) echo
 				if ($_SESSION['rank'] > 0){
 					if (isset($_GET['action']) && $_GET['action'] == 'delete'){
 						if(isset($_POST['delete']) && $_POST['delete'] == "confirm"){
-						$sql5 = "DELETE FROM `mails` WHERE `id` = '" . $obj->id . "'";
+						$sql5 = "DELETE FROM `mail` WHERE `id` = '" . $obj->id . "'";
 						$mysql->query($sql5);
 ?>
 			<span class="highlight">The following post has been deleted!</span><br>
