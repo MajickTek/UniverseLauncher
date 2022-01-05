@@ -2,6 +2,7 @@
 
 UniverseLauncher is a a PHP based CMS to go along with a LUNI database. It can manage the database, approve names, unlock accounts, register new ones,
 has a basic forum functionality and 5 color themes.
+
 This version is being/has been updated to work with the database structure of  https://github.com/DarkflameUniverse/DarkflameServer.
 ### Credits:
 Uses an adapted version of
