@@ -28,7 +28,7 @@
 			<div class="widget box">
 				<h3 style="padding-bottom: 5px;">Server Staff</h3>
 				<?php
-					$sql = "SELECT NAME FROM accounts WHERE rank > 1;";
+					$sql = "SELECT NAME FROM accounts WHERE gm_level > 1;";
 					$res = $mysql->query($sql);
 					if ($res != NULL){
 						if ($res->num_rows > 0) echo "<b>Admins</b>: <br>\n";
@@ -40,7 +40,7 @@
 					}
 				?>
 				<?php
-					$sql = "SELECT NAME FROM accounts WHERE rank = 1;";
+					$sql = "SELECT NAME FROM accounts WHERE gm_level = 1;";
 					$res = $mysql->query($sql);
 					if ($res != NULL){
 						if ($res->num_rows > 0) echo "<b>Moderators</b>: <br>\n";
