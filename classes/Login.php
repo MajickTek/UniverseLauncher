@@ -67,9 +67,7 @@ class Login
 
                 // database query, getting all the info of the selected user (allows login via email address in the
                 // username field)
-                $sql = "SELECT id, name, email, password, rank
-                        FROM accounts
-                        WHERE name = '" . $user_name . "' OR email = '" . $user_name . "';";
+                $sql = "SELECT id, NAME, PASSWORD FROM accounts WHERE NAME = '" . $user_name ."';";
                 $result_of_login_check = $this->db_connection->query($sql);
 
                 // if this user exists
@@ -80,14 +78,15 @@ class Login
 
                     // Hashes the users password with the SHA512 algorithm and encodes it as base64 for backwards
                     // with the database
-                    if (base64_encode(hash('sha512', $_POST['user_password'])) == $result_row->password) {
+					//$_POST['user_password'] // $result_row->PASSWORD
+                    if (password_verify($_POST['user_password'], $result_row->PASSWORD)) {
 
                         // write user data into PHP SESSION (a file on your server)
                         $_SESSION['user_id'] = $result_row->id;
-						$_SESSION['user_name'] = $result_row->name;
-                        $_SESSION['user_email'] = $result_row->email;
+						$_SESSION['user_name'] = $result_row->NAME;
+                        //$_SESSION['user_email'] = $result_row->email;
                         $_SESSION['user_login_status'] = 1;
-						$_SESSION['rank'] = $result_row->rank;
+						//$_SESSION['rank'] = $result_row->rank;
 
                     } else {
                         $this->errors[] = "Wrong password. Try again.";
