@@ -12,7 +12,7 @@
 
 			<!-- The email form is being converted to the play key form -->
 			<label for="login_input_email">Play Key</label><br>
-			<input id="login_input_email" class="login_input" type="email" name="user_email" required /><br>
+			<input id="login_input_email" class="login_input" type="text" name="user_email" required /><br>
 
 			<label for="login_input_password_new">Password <span class="small">(min. 6 characters)</span></label><br>
 			<input id="login_input_password_new" class="login_input" type="password" name="user_password_new" pattern=".{6,}" required autocomplete="off" /><br>
