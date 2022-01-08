@@ -13,8 +13,10 @@
 				$uFlag = true;
 			}
 			
-			if(isset($_POST['other_player_name')) {
-				$sql .= "(SELECT id FROM accounts WHERE NAME = \"" . $_POST['other_player_name'] . "\"), \"php\";";
+			if(isset($_POST['other_player_name'])) {
+				$sql .= "(SELECT account_id FROM charinfo WHERE name = \"" . $_POST['other_player_name'] . "\"), \"php\");";
+			} else {
+				$sql .= "0, \"php\");";
 			}
 			
 			if ($uFlag){
