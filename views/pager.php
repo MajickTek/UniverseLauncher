@@ -111,6 +111,9 @@
 		case 'instances':
 			include ('views/instances.php');
 			break;
+		case 'help':
+			include ('views/help.php');
+			break;
 		default:
 			include('views/404.php');
 	}

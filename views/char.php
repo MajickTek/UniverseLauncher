@@ -10,9 +10,9 @@
 			$name = $obj->name;
 ?>
 		<h1 style="margin: 0;"><?php echo $name . " "; //if ($uname != "") echo "(" . $uname . ") "?></h1>
-		<h3>ID: <?php echo $objid; ?>]</h3>
+		<h3>ID: <?php echo $objid; ?></h3>
 		<br/>
-		<!--<span>Zone: <?php echo $obj->lastZoneId; ?>, Instance: <?php echo $obj->mapInstance; ?>, Clone: <?php echo $obj->mapClone; ?>, Position: (<?php echo $obj->x . "|" . $obj->y . "|" . $obj->z; ?>)</span><br/>-->
+		<!--<span>Zone: <?php //echo $obj->lastZoneId; ?>, Instance: <?php //echo $obj->mapInstance; ?>, Clone: <?php //echo $obj->mapClone; ?>, Position: (<?php //echo $obj->x . "|" . $obj->y . "|" . $obj->z; ?>)</span><br/>-->
 		<!--<span style="font-size: 9pt; color: #B00;">This position is only updated on world change at the moment</span>-->
 <?php
 		}

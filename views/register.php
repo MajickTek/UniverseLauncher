@@ -11,14 +11,15 @@
 			<input id="login_input_username" class="login_input" type="text" pattern="[a-zA-Z0-9]{2,64}" name="user_name" required /><br>
 
 			<!-- The email form is being converted to the play key form -->
-			<label for="login_input_email">Play Key</label><br>
-			<input id="login_input_email" class="login_input" type="text" name="user_email" required /><br>
+			<!--<label for="login_input_email">Play Key</label><br>-->
+			<!--<input id="login_input_email" class="login_input" type="text" name="user_email" required /><br>-->
 
 			<label for="login_input_password_new">Password <span class="small">(min. 6 characters)</span></label><br>
 			<input id="login_input_password_new" class="login_input" type="password" name="user_password_new" pattern=".{6,}" required autocomplete="off" /><br>
 
 			<label for="login_input_password_repeat">Repeat password</label><br>
 			<input id="login_input_password_repeat" class="login_input" type="password" name="user_password_repeat" pattern=".{6,}" required autocomplete="off" /><br>
+			<p>Your game account will be locked by default and need activation via a Play Key acquired from Discord.</p>
 			<div style="height: 3px;">&nbsp;</div>
 			<span class="small">
 			<?php

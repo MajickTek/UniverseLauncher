@@ -48,13 +48,13 @@ class Registration
             $this->errors[] = "Username cannot be shorter than 2 or longer than 64 characters";
         } elseif (!preg_match('/^[a-z\d]{2,64}$/i', $_POST['user_name'])) {
             $this->errors[] = "Username does not fit the name scheme: only a-Z and numbers are allowed, 2 to 64 characters";
-        } elseif (empty($_POST['user_email'])) {
-            $this->errors[] = "Play key cannot be empty";
+        //} elseif (empty($_POST['user_email'])) {
+        //    $this->errors[] = "Play key cannot be empty";
         } elseif (!empty($_POST['user_name'])
             && strlen($_POST['user_name']) <= 64
             && strlen($_POST['user_name']) >= 2
             && preg_match('/^[a-z\d]{2,64}$/i', $_POST['user_name'])
-            && !empty($_POST['user_email'])
+            //&& !empty($_POST['user_email'])
             //&& strlen($_POST['user_email']) <= 64
             //&& filter_var($_POST['user_email'], FILTER_VALIDATE_EMAIL)
             && !empty($_POST['user_password_new'])
@@ -94,7 +94,8 @@ class Registration
                     //$sql = "INSERT INTO accounts (name, password, email, banned)
                      //       VALUES('" . $user_name . "', '" . $user_password_hash . "', '" . $user_email . "', TRUE);";
 					 
-                    $sql = "INSERT INTO accounts (NAME, PASSWORD, gm_level, locked, banned, play_key_id, mute_expire) VALUES ('" . $user_name . "', '" . $user_password_hash . "', " . "0, 0, 0, 0, 0);";
+					 //locked out by default
+                    $sql = "INSERT INTO accounts (NAME, PASSWORD, gm_level, locked, banned, play_key_id, mute_expire) VALUES ('" . $user_name . "', '" . $user_password_hash . "', " . "0, 1, 0, 0, 0);";
 					$query_new_user_insert = $this->db_connection->query($sql);
 
                     // if user has been added successfully
