@@ -28,8 +28,6 @@
 						$obj = $res->fetch_object();
 						echo "<b>Servers</b>: " . $obj->name . "@" . $obj->ip . ":" . $obj->port . "<br>\n";
 					}
-					echo "<b>Legacy AccountManager</b><br>\n";
-					echo "<a href=\"http://luniverse.website:5000/logout\">Old Dashboard</a><br>\n";
 				?>
 				<br>
 				<?php
@@ -55,7 +53,8 @@
 						$obj = $res->fetch_object();
 						echo "<b>Instances</b>: " . $obj->cnt . "<br>\n";
 					}
-					
+					echo "<b>Legacy AccountManager</b><br>\n";
+					echo "<a href=\"http://luniverse.website:5000/logout\">Old Dashboard</a><br>\n";
 				?>
 			</div>
 			<div class="widget box">
