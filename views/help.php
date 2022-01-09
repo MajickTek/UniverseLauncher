@@ -1,6 +1,6 @@
 <div class="box pane">
 	<h1 style = "margin: 0;">Bug Report / User Report</h1>
-	<h3>Jokes will be discarded.</h3>
+	<h3>NOTE: Jokes will be discarded.</h3>
 	
 	<?php
 		$updated = false;

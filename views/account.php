@@ -1,7 +1,7 @@
 <?php //require_once('libraries/forums.php'); ?>
 		<div class="box pane">
 			<h1 style="margin: 0;">Account</h1>
-			<h3>If you came here to enter your play key, you don't need to enter your password.</h3>
+			<h3>NOTE: If you came here to enter your play key, you don't need to enter your password.</h3>
 			
 <?php
 	if (isset($_GET['name']) && $_GET['name'] != $_SESSION['user_name'] && (preg_match("/^[0-9A-Za-z]+$/", $_GET['name']) == 1)){
