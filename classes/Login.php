@@ -67,7 +67,7 @@ class Login
 
                 // database query, getting all the info of the selected user (allows login via email address in the
                 // username field)
-                $sql = "SELECT id, NAME, PASSWORD FROM accounts WHERE NAME = '" . $user_name ."';";
+                $sql = "SELECT id, NAME, PASSWORD, gm_level FROM accounts WHERE NAME = '" . $user_name ."';";
                 $result_of_login_check = $this->db_connection->query($sql);
 
                 // if this user exists
@@ -86,7 +86,7 @@ class Login
 						$_SESSION['user_name'] = $result_row->NAME;
                         //$_SESSION['user_email'] = $result_row->email;
                         $_SESSION['user_login_status'] = 1;
-						$_SESSION['rank'] = $result_row->gm_level;
+						$_SESSION['gm_level'] = $result_row->gm_level;
 
                     } else {
                         $this->errors[] = "Wrong password. Try again.";

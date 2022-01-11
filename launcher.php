@@ -8,11 +8,12 @@
 		<div style="position: relative">
 			<div class="left">
 				<div class="box">
-					<h3>Welcome to LUNI:</h3><h4>LEGO Universe, Newly Imagined!</h4>
+					<h3>Welcome to Libre Universe:</h3><h4>Extended DLU!</h4>
+					<br />
+					<button onclick="window.location.replace('index.php');">Login -></button>
 				</div>
 				<br>
 				<span style="color: #FFF">The LEGO Group has not endorsed or authorized the operation of this game and is not liable for any safety issues in relation to the operation of this game.</span>
-				
 				<div class="alert bottom">
 					<h4 style="color: #FF0000;">NOTE: Be aware that this server is in EARLY development.</h4>
 				</div>

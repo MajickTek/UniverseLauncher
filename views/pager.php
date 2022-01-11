@@ -29,12 +29,13 @@
 				<li><a class="button img-button character-button<?php echo isPage($page, 'char'); ?>" href="?page=char">Character</a></li>
 				<li><a class="button img-button mail-button<?php echo isPage($page, 'mail'); ?>" href="?page=mail">Mail</a></li>
 			</ul>
-			<?php if (isset($_SESSION['rank']) && $_SESSION['rank'] > 1){ ?><ul class="nav">
+			<?php if (isset($_SESSION['gm_level']) && $_SESSION['gm_level'] > 1){ ?><ul class="nav">
 				<li><span class="button img-button admin-button title">Administration</span></li>
 				<li><a class="button img-button accounts-button<?php echo isPage($page, 'accounts'); ?>" href="?page=accounts">Accounts</a></li>
 				<li><a class="button img-button characters-button<?php echo isPage($page, 'characters'); ?>" href="?page=characters">Characters</a></li>
-				<li><a class="button img-button instances-button<?php echo isPage($page, 'instances'); ?>" href="?page=instances">Instances</a></li>
-				<li><a class="button img-button sessions-button<?php echo isPage($page, 'sessions'); ?>" href="?page=sessions">Sessions</a></li>
+				<li><a class="button img-button sessions-button<?php echo isPage($page, 'pets'); ?>" href="?page=pets">Pets</a></li>
+				<!--<li><a class="button img-button instances-button<?php //echo isPage($page, 'instances'); ?>" href="?page=instances">Instances</a></li>
+				<li><a class="button img-button sessions-button<?php //echo isPage($page, 'sessions'); ?>" href="?page=sessions">Sessions</a></li>-->
 			</ul>
 			<?php } ?><ul class="nav">
 				<li><a class="button img-button help-button<?php echo isPage($page, 'help'); ?>" href="?page=help">Help</a></li>
@@ -113,6 +114,9 @@
 			break;
 		case 'help':
 			include ('views/help.php');
+			break;
+		case 'pets':
+			include ('views/pets.php');
 			break;
 		default:
 			include('views/404.php');

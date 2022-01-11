@@ -56,6 +56,13 @@
 					echo "<b>Legacy AccountManager</b><br>\n";
 					echo "<a href=\"http://luniverse.website:5000/logout\">Old Dashboard</a><br>\n";
 				?>
+				<br>
+				<?php
+					//display session stuff hopefully
+					echo "<b>Session:</b><br />\n";
+					echo '<pre>'; print_r($_SESSION); echo '</pre>';
+					
+				?>
 			</div>
 			<div class="widget box">
 				<h3 style="padding-bottom: 5px;">Server Staff</h3>

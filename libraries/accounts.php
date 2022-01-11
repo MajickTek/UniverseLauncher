@@ -46,7 +46,7 @@
 						//$return .= "Name: " . $_POST['name'] . "<br>\n";
 						$user_name = $_POST['name'];
 						if ($uFlag) $sql .= ", ";
-						$sql .= "`name` = '" . $user_name . "'";
+						$sql .= "`NAME` = '" . $user_name . "'";
 						$uFlag = true;
 						$flag = true;
 					}else{
@@ -76,7 +76,7 @@
 							if ($_POST['password-repeat'] == $_POST['password']){
 								$user_newpassword = $_POST['password'];
 								if ($uFlag) $sql .= ", ";
-								$sql .= "`password` = '" . str_replace("$2y$", "$2a$", password_hash($user_newpassword, PASSWORD_BCRYPT, $bcoptions)) . "'";
+								$sql .= "`PASSWORD` = '" . str_replace("$2y$", "$2a$", password_hash($user_newpassword, PASSWORD_BCRYPT, $bcoptions)) . "'";
 								//$return .= "New Password: " . $user_newpassword . "<br>";
 								$uFlag = true;
 							}else{
@@ -94,7 +94,7 @@
 					if ($uFlag) $sql .= ", ";
 					$user_rank = (int) $_POST['rank'];
 					$uFlag = true;
-					$sql .= "`rank` = '" . $user_rank . "'";
+					$sql .= "`gm_level` = '" . $user_rank . "'";
 					//$return .= "Rank: " . getRankName($user_rank) . "<br>";
 				}
 				

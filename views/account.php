@@ -80,7 +80,7 @@
 ?>
 			<form method="POST" style="font-size: 150%;">
 				<span style="min-width: 5.5em; display: inline-block;">Name: </span>
-				<?php echo $_SESSION['user_name'] . " | To request a name change, contact a Mythan."; ?><br>
+				<?php echo $_SESSION['user_name'] . " | To request a name change, contact a Mythran."; ?><br>
 				<div style="height: 0.2em;"></div>
 				<!--<span style="min-width: 5em; display: inline-block;">E-Mail: </span>-->
 				<!--<input name="email" style="width: 20em; max-width: 100%;" type="email" value="<?php echo $_SESSION['user_email']; ?>"/><br>-->

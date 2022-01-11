@@ -1,6 +1,6 @@
 <?php require_once('libraries/sessions.php'); ?>
 <div class="box pane">
-	<?php if (isset($_SESSION['rank']) && $_SESSION['rank'] > 1){ ?>
+	<?php if (isset($_SESSION['gm_level']) && $_SESSION['gm_level'] > 1){ ?>
 	<h1 style="margin: 0;">Sessions</h1>
 	<br/>
 	<?php 
