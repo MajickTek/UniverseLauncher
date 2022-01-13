@@ -1,1 +1,4 @@
-Changelog unavailable
+1/10/22
+Set this homepage as default. A more automated/RSS log will be
+ placed here.
+The login/dashboard can be accessed by clicking "Login" on the left.

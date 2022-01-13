@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="mythran">
 	<head>
-		<title>LUNIServer - LEGO Universe, Newly Imagined</title>
+		<title>Libre Universe</title>
 		<link rel="stylesheet" href="css/lu.css?launcher=1" type="text/css"/>
 	</head>
 	<body style="overflow:hidden;">

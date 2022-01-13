@@ -21,6 +21,7 @@
 			</div>
 			<div class="widget box">
 				<h3 style="padding-bottom: 5px;">Server Status</h3>
+				<p>Welcome to Libre Universe! Below is info about the server (most of it is technical).</p>
 				<?php
 					$sql = "SELECT * FROM servers;";
 					$res = $mysql->query($sql);
@@ -58,7 +59,7 @@
 				?>
 				<br>
 				<?php
-					//display session stuff hopefully
+					//used for debugging
 					echo "<b>Session:</b><br />\n";
 					echo '<pre>'; print_r($_SESSION); echo '</pre>';
 					
@@ -67,7 +68,7 @@
 			<div class="widget box">
 				<h3 style="padding-bottom: 5px;">Server Staff</h3>
 				<?php
-					$sql = "SELECT NAME FROM accounts WHERE gm_level > 1;";
+					$sql = "SELECT NAME FROM accounts WHERE gm_level > 0;";
 					$res = $mysql->query($sql);
 					if ($res != NULL){
 						if ($res->num_rows > 0) echo "<b>Admins</b>: <br>\n";
@@ -93,17 +94,17 @@
 			</div>
 			<div class="widget box">
 				<h3 style="padding-bottom: 5px;">Links</h3>
+				<b>Libre Universe (this site) Stuff:</b>
+				<ul style="margin: 0;">
+					<li><a href="https://trello.com/b/ecgQAqgH/libre-universe">TODO list on Trello</a>
+					<p>if you have any idea on how to help with the tasks labeled "Help", reach out on Discord.</p></li>
+				</ul>
+				
 				<b>DLU:</b>
 				<ul style="margin: 0;">
 					<li><a href="https://darkflameuniverse.org">DLU Website</a></li>
 					<li><a href="https://github.com/DarkflameUniverse/DarkflameServer/">DLU Github</a></li>
-					<!--<li><a href="http://luni.wikia.com">LUNI Wikia</a></li>
-					<li><a href="http://luni-wiki.wikispaces.com">LUNI Wikispaces</a></li>-->
 				</ul>
-				<!--<b>Docs:</b>
-				<ul style="margin: 0;">
-					<li><a href="https://docs.google.com/document/d/1v9GB1gNwO0C81Rhd4imbaLN7z-R0zpK5sYJMbxPP3Kc">Packet Docs</a></li>
-				</ul>-->
 			</div>
 			<div class="widget box">
 				<h3 style="padding-bottom: 5px;">DLU Credits</h3>
