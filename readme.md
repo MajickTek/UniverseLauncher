@@ -5,8 +5,8 @@ and has 5 color themes.
 
 This fork is has been updated to work with the database structure of  https://github.com/DarkflameUniverse/DarkflameServer.
 
-Features:
-```
+### Features:
+
 - A general dashboard with instructions on how to register and info about the running server(s)
 - A page which lets users change their password and enter a Play Key
 - A page to see info about a selected minifig (WIP)
@@ -16,18 +16,18 @@ Features:
   - A Characters page to see all minifigs and approve names
   - A Pets page to see all pets with a toggleable filter to show unapproved names (which you can then approve)
 - A Help page which functions as a bug report tool.
-```
 
-Some things have been removed from the original:
-```
+
+### Some things have been removed from the original:
+
 - Forums page
   - Code was messy, our group uses Discord
 - Sessions/Instances pages
   - DLU doesn't have a database or other interface to easily see running sessions/instances and do actions such as shutting them down or launching new ones.
-```
 
 
-What can be improved?
+
+### What can be improved?
 - Using modern sql techniques such as "prepared staements" to improve site stability and security
 - Everything else
 
