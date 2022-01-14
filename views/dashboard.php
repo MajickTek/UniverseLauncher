@@ -55,7 +55,7 @@
 						echo "<b>Instances</b>: " . $obj->cnt . "<br>\n";
 					}
 					echo "<b>Legacy AccountManager</b><br>\n";
-					echo "<a href=\"http://luniverse.website:5000/logout\">Old Dashboard</a><br>\n";
+					echo "<a href=\"http://luniverse.website:8000">New Dashboard</a><br>\n";
 				?>
 				<br>
 				<?php
